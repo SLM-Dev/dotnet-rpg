@@ -17,7 +17,7 @@ namespace rpg_game_dotnet.Controllers
 
             
             new Character (),
-            new Character { Name = "Billy"}
+            new Character { Id = 1, Name = "Billy"}
         
             };
 
@@ -28,11 +28,11 @@ namespace rpg_game_dotnet.Controllers
                 return Ok(characters);
             }
 
-            [HttpGet]
-            public ActionResult<Character> GetSingle()
+            [HttpGet("{id}")]
+            public ActionResult<Character> GetSingle(int id )
             {
             
-                return Ok(characters[0]);
+                return Ok(characters.FirstOrDefault(c => c.Id == id));
             }
         }
     }
