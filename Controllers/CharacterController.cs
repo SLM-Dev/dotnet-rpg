@@ -13,13 +13,26 @@ namespace rpg_game_dotnet.Controllers
 
         public class CharacterController : ControllerBase
         {
-            private static Character Monk = new Character();
+            private static List<Character> characters = new List<Character>(){
+
+            
+            new Character (),
+            new Character { Name = "Billy"}
         
+            };
+
+          
+            [HttpGet("GetAll")]
+            public ActionResult<List<Character>> Get()
+            {
+                return Ok(characters);
+            }
+
             [HttpGet]
-            public ActionResult<Character> Get()
+            public ActionResult<Character> GetSingle()
             {
             
-                return Ok(Monk);
+                return Ok(characters[0]);
             }
         }
     }
